@@ -1,0 +1,17 @@
+{
+  "name": "minutos99",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Manuel Alvarez",
+  "license": "ISC",
+  "description": "Middleware for 99minutos shipping handler",
+  "dependencies": {
+    "@hapi/joi": "^17.1.1",
+    "axios": "^0.21.4",
+    "moment": "^2.29.1"
+  }
+}
