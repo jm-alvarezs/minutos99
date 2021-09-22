@@ -243,6 +243,21 @@ class Minutos99 {
           reject(error.response);
         });
     });
+
+  cancelOrder = (number) =>
+    new Promise((resolve, reject) => {
+      const url = `${this.base_url}/api/v1/cancel/order`;
+      axios
+        .post(url, {
+          counters: [number],
+        })
+        .then((res) => {
+          resolve(res.data.message);
+        })
+        .catch((error) => {
+          reject(error.response);
+        });
+    });
 }
 
 module.exports = Minutos99;
