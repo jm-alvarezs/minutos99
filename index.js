@@ -105,7 +105,8 @@ class Minutos99 {
       axios
         .get(url, this.headers)
         .then((res) => {
-          resolve(res.data.message);
+          const packages = res.data;
+          resolve(packages);
         })
         .catch((error) => {
           reject(error);
@@ -245,4 +246,3 @@ class Minutos99 {
 }
 
 module.exports = Minutos99;
-
