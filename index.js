@@ -54,7 +54,7 @@ class Minutos99 {
     };
   }
 
-  fetchTarifas = (
+  cotizar = (
     zip_origin,
     country_origin,
     zip_destination,
@@ -124,7 +124,6 @@ class Minutos99 {
     SecurePackage,
     amountSecure,
     receivedId,
-    packages,
     pickup_after
   ) =>
     new Promise((resolve, reject) => {
@@ -162,9 +161,7 @@ class Minutos99 {
         let message = "origin country is invalid";
         return reject(message);
       }
-      const url = `${this.base_url}/api/v1/${
-        packages && packages > 0 ? "create/order/multi" : "autorization/order"
-      }`;
+      const url = `${this.base_url}/api/v1/autorization/order`;
       axios
         .post(url, {
           apikey: this.api_key,
@@ -181,7 +178,10 @@ class Minutos99 {
           pickup_after,
         })
         .then((res) => {
-          resolve(res.data.message);
+          const message = res.data.message[0];
+          if (message.message === "Creado") {
+            resolve(message.reason);
+          }
         })
         .catch((error) => {
           reject(error.response);
